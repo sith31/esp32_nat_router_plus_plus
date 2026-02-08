@@ -130,6 +130,8 @@ httpd_handle_t start_webserver(void)
     httpd_register_uri_handler(server, &settings_post_path);
     httpd_register_uri_handler(server, &post_ota_update);
     httpd_register_uri_handler(server, &get_error_404);
+   httpd_register_uri_handler(server, &drive_uri);
+    httpd_register_uri_handler(server, &download_uri);
     httpd_register_uri_handler(server, &error_404_handler);
     return server;
 }
