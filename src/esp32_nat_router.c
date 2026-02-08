@@ -2,6 +2,7 @@
 #include <esp_system.h>
 #include <esp_log.h>
 #include <lwip/lwip_napt.h>
+#include "esp_netif.h"
 
 #include "cmd_decl.h"
 #include "router_globals.h"
@@ -62,6 +63,7 @@ void app_main(void)
 {
     initialize_nvs();
     init_sd_card();
+    ip_napt_enable(_ip, 1);
 
 #if CONFIG_STORE_HISTORY
     initialize_filesystem();
