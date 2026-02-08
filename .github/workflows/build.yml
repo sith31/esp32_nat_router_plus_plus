@@ -12,20 +12,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Force ESP-IDF environment
+      - name: Build firmware
         run: |
           . /opt/esp/idf/export.sh
           idf.py --version
-
-      - name: Disable Component Manager
-        run: echo "IDF_COMPONENT_MANAGER=0" >> $GITHUB_ENV
-
-      - name: Clean
-        run: |
+          export IDF_COMPONENT_MANAGER=0
           rm -rf build managed_components
-          idf.py fullclean
-
-      - name: Build
-        run: |
           idf.py set-target esp32s3
           idf.py build
