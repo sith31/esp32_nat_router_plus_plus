@@ -3,7 +3,7 @@ idf_component_register(SRCS "esp32_nat_router.c"
                             "request_handler.c" 
                             "auth_handler.c"
                     INCLUDE_DIRS "."
-                    PRIV_REQUIRES nvs_flash esp_http_server fatfs sdmmc esp_driver_uart esp_driver_gpio)
+                    PRIV_REQUIRES nvs_flash esp_http_server fatfs sdmmc)
 
                     
 
