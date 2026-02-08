@@ -1,20 +1,11 @@
-name: Build ESP32-S3 V5
-on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: espressif/idf:v5.1
     steps:
       - uses: actions/checkout@v4
-        with:
-          submodules: 'recursive'
-      - name: Build with ESP-IDF
-        uses: espressif/esp-idf-ci-action@v1
-        with:
-          esp_idf_version: v5.0
-          target: esp32s3
-          path: '.'
-      - name: Upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: firmware-s3
-          path: build/*.bin
+      - name: Build
+        run: |
+          idf.py set-target esp32s3
+          idf.py build
