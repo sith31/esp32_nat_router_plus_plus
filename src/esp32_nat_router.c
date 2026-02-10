@@ -86,11 +86,12 @@ void app_main(void)
     }
 
     ota_update_init();
-    initialize_console();
+    //initialize_console();
     register_system();
     register_nvs();
     register_router();
-    start_console();
+    //start_console();
+    ESP_LOGI(TAG, "Sistema listo y NAT activo");
 }
 
 //-----------------------------------------------------------------------------
