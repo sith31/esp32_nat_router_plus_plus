@@ -100,17 +100,17 @@ void wifi_init()
             strlcpy((char *)wifi_config.sta.password, passwd, sizeof(wifi_config.sta.password));
         }
         ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &wifi_config));
-        if (strlen(ent_username) != 0 && strlen(ent_identity) != 0) {
-            ESP_LOGI(TAG, "STA enterprise connection");
-            if (strlen(ent_identity) != 0) {
-                esp_eap_client_set_identity((uint8_t *)ent_identity, strlen(ent_identity)); // Provide identity
-            } else {
-                esp_eap_client_set_identity((uint8_t *)ent_username, strlen(ent_username)); // Fallback to username
-            }
-            esp_eap_client_set_username((uint8_t *)ent_username, strlen(ent_username)); // Provide username
-            esp_eap_client_set_password((uint8_t *)passwd, strlen(passwd)); // Provide password
+        //if (strlen(ent_username) != 0 && strlen(ent_identity) != 0) {
+          //  ESP_LOGI(TAG, "STA enterprise connection");
+            //if (strlen(ent_identity) != 0) {
+             //   esp_eap_client_set_identity((uint8_t *)ent_identity, strlen(ent_identity)); // Provide identity
+           // } else {
+           //     esp_eap_client_set_identity((uint8_t *)ent_username, strlen(ent_username)); // Fallback to username
+           // }
+           // esp_eap_client_set_username((uint8_t *)ent_username, strlen(ent_username)); // Provide username
+           // esp_eap_client_set_password((uint8_t *)passwd, strlen(passwd)); // Provide password
             //ESP_ERROR_CHECK(esp_wifi_sta_enterprise_enable());
-        }
+       // }
 
         ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_AP, &ap_config));
     } else {
