@@ -109,7 +109,7 @@ void wifi_init()
             }
             esp_eap_client_set_username((uint8_t *)ent_username, strlen(ent_username)); // Provide username
             esp_eap_client_set_password((uint8_t *)passwd, strlen(passwd)); // Provide password
-            ESP_ERROR_CHECK(esp_wifi_sta_enterprise_enable());
+            //ESP_ERROR_CHECK(esp_wifi_sta_enterprise_enable());
         }
 
         ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_AP, &ap_config));
