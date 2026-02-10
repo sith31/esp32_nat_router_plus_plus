@@ -18,7 +18,8 @@
 #include "request_handler.h"
 #include "auth_handler.h"
 
-static const char *TAG = "HTTPServer";
+//static const char *TAG = "HTTPServer";
+static const char *TAG __attribute__((unused)) = "HTTPServer";
 httpd_handle_t server = NULL;
 
 // --- FUNCIONES AUXILIARES DE ALMACENAMIENTO ---
