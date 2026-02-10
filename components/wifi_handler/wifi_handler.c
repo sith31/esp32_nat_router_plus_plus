@@ -11,7 +11,8 @@
 #include <esp_wifi.h>
 #include <esp_netif.h>
 #include <esp_wifi_types.h>
-#include <cJSON.h>
+//#include <cJSON.h>
+#include "json/cJSON.h"
 #include "router_globals.h"
 #include "initialization.h"
 #include "wifi_handler.h"
