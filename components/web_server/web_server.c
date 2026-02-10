@@ -6,7 +6,9 @@
 
 #include <esp_log.h>
 #include <esp_http_server.h>
-#include <sys/statvfs.h>
+//#include <sys/statvfs.h>
+#include "esp_vfs.h"
+#include "esp_vfs_fat.h"
 #include <sys/param.h>
 #include <dirent.h>
 #include <stdio.h>
@@ -21,14 +23,15 @@ httpd_handle_t server = NULL;
 
 // --- FUNCIONES AUXILIARES DE ALMACENAMIENTO ---
 
-void get_sd_storage_info(uint64_t *total_mb, uint64_t *free_mb) {
-    struct statvfs stat;
-    if (statvfs("/sdcard", &stat) == 0) {
-        *total_mb = ((uint64_t)stat.f_blocks * stat.f_frsize) / (1024 * 1024);
-        *free_mb = ((uint64_t)stat.f_bfree * stat.f_frsize) / (1024 * 1024);
-    } else {
-        *total_mb = 0; *free_mb = 0;
+// Versión compatible con ESP-IDF 5.x para obtener espacio libre
+uint64_t get_free_bytes() {
+    FATFS *fs;
+    DWORD free_clusters;
+    // "storage" es el nombre común de la partición, cámbialo si tu partición tiene otro nombre
+    if (f_getfree("0:", &free_clusters, &fs) == FR_OK) {
+        return (uint64_t)free_clusters * fs->csize * 512; // Suponiendo sectores de 512 bytes
     }
+    return 0;
 }
 
 // --- HANDLERS DEL DRIVE ---
