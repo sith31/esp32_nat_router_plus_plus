@@ -13,7 +13,6 @@
 #include <esp_console.h>
 #include <esp_vfs_dev.h>
 #include <driver/uart.h>
-#include "driver/uart_vfs.h"
 //#include "driver/uart_vfs.h"
 #include "driver/usb_serial_jtag_vfs.h"
 #include <linenoise/linenoise.h>
