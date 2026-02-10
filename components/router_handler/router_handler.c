@@ -14,6 +14,7 @@
 #include <nvs.h>
 #include <nvs_flash.h>
 #include <lwip/opt.h>
+#include "lwip/ip_addr.h"
 #include <lwip/err.h>
 #include <lwip/sys.h>
 #include <lwip/netdb.h>
@@ -25,6 +26,10 @@
 #include "router_globals.h"
 #include "initialization.h"
 #include "router_handler.h"
+
+#ifndef IP_PORTMAP_MAX
+#define IP_PORTMAP_MAX 32  // Definimos un máximo de 32 reglas si no viene del sistema
+#endif
 
 
 static const char *TAG = "Router_handler";
