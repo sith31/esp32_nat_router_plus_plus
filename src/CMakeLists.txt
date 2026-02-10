@@ -1,6 +1,6 @@
-idf_component_register(SRCS "esp32_nat_router.c" "web_server.c" "request_handler.c" "auth_handler.c"
+idf_component_register(SRCS "nat_router.c" "web_server.c" "request_handler.c" "auth_handler.c"
                     INCLUDE_DIRS "."
-                    PRIV_REQUIRES nvs_flash esp_http_server fatfs sdmmc)
+                    PRIV_REQUIRES nvs_flash esp_http_server fatfs sdmmc driver)
 
                     
 
