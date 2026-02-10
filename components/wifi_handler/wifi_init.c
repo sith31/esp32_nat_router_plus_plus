@@ -12,7 +12,7 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/event_groups.h>
 #include <esp_wifi.h>
-#include <esp_eap_client.h>
+//#include <esp_eap_client.h>
 #include <esp_netif.h>
 #include <esp_err.h>
 #include "lwip/ip4_addr.h"
