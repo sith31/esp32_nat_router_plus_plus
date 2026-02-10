@@ -2,17 +2,16 @@
 #include <string.h>
 #include <esp_system.h>
 #include <esp_log.h>
-#include <lwip/lwip_napt.h>
 #include "esp_netif.h"
-
+#include <lwip/lwip_napt.h>
 #include "cmd_decl.h"
+#include "hardware_handler.h"
+#include "console_handler.h"
 #include "router_globals.h"
 #include "get_data_handler.h"
 #include "auth_handler.h"
 #include "initialization.h"
-#include "hardware_handler.h"
 #include "web_server.h"
-#include "console_handler.h"
 #include "file_system.h"
 #include "mac_generator.h"
 #include "nvm.h"
