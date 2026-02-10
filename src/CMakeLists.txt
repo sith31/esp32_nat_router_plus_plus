@@ -2,6 +2,10 @@ idf_component_register(SRCS "nat_router.c" "web_server.c" "request_handler.c" "a
                     INCLUDE_DIRS "."
                     PRIV_REQUIRES nvs_flash esp_http_server fatfs sdmmc driver)
 
+# Añade esta línea justo debajo para exponer los .h de main
+idf_component_get_property(main_lib main COMPONENT_LIB)
+target_include_directories(${main_lib} PUBLIC ".")
+
                     
 
 target_add_binary_data(${COMPONENT_TARGET} "../components/web_server/www/output/gzip/index.html.gz" TEXT)
