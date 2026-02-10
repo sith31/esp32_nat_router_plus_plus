@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <esp_system.h>
 #include <esp_log.h>
 #include <lwip/lwip_napt.h>
