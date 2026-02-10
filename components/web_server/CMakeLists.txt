@@ -3,4 +3,4 @@ idf_component_register(SRCS "request_handler.c" "response_handler.c" "get_data_h
                     INCLUDE_DIRS "include" "."
                     REQUIRES esp_http_server esp-tls json esp_http_client 
                              utils cmd_router cmd_nvs ota_handler 
-                             wifi_handler esp_wifi lwip)
+                             wifi_handler esp_wifi lwip fatfs)
