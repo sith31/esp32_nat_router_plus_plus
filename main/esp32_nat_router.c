@@ -6,6 +6,7 @@
 #include <lwip/lwip_napt.h>
 #include "cmd_decl.h"
 #include "hardware_handler.h"
+
 //#include "console_handler.h"
 #include "router_globals.h"
 #include "get_data_handler.h"
