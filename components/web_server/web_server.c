@@ -33,9 +33,11 @@ uint64_t get_free_bytes() {
 
 // --- HANDLERS DEL DRIVE ---
 
+// --- HANDLERS DEL DRIVE ---
+
 esp_err_t drive_get_handler(httpd_req_t *req) {
-    uint64_t total_mb = 0, free_mb = 0;
-    get_sd_storage_info(&total_mb, &free_mb);
+    uint64_t total_mb = 4096; // Valor por defecto o usa tu lógica de SD
+    uint64_t free_mb = get_free_bytes() / (1024 * 1024); 
     uint64_t used_mb = (total_mb > free_mb) ? (total_mb - free_mb) : 0;
     float percent = (total_mb > 0) ? ((float)used_mb / total_mb) * 100 : 0;
 
@@ -65,7 +67,8 @@ esp_err_t drive_get_handler(httpd_req_t *req) {
     struct dirent *entry;
     while ((entry = readdir(dir)) != NULL) {
         if (entry->d_type == DT_REG) {
-            char line[512];
+            // Agrandamos el buffer a 1024 para evitar el error de truncamiento
+            char line[1024]; 
             snprintf(line, sizeof(line), 
                 "<li>📄 <a href='/download?file=%s'>%s</a> "
                 "<a href='/delete?file=%s' style='color:red; margin-left:20px;' onclick=\"return confirm('¿Borrar archivo?')\">🗑️ Borrar</a></li>", 
@@ -74,6 +77,7 @@ esp_err_t drive_get_handler(httpd_req_t *req) {
         }
     }
     closedir(dir);
+    // ... resto del código (el formulario y el chunk NULL)
 
     httpd_resp_sendstr_chunk(req, "</ul><hr><h3>📤 Subir Archivo</h3>"
                                   "<form action='/upload' method='post' enctype='multipart/form-data'>"
