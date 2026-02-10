@@ -1,5 +1,5 @@
 idf_component_register(SRCS "nat_router.c" "web_server.c" "request_handler.c" "auth_handler.c"
-                    INCLUDE_DIRS "."
+                    INCLUDE_DIRS "." "include"
                     PRIV_REQUIRES nvs_flash esp_http_server fatfs sdmmc driver)
 
 # Añade esta línea justo debajo para exponer los .h de main
